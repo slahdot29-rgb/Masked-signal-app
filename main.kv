@@ -1,0 +1,53 @@
+ScreenManager:
+    KeyScreen:
+    MainScreen:
+
+<KeyScreen>:
+    BoxLayout:
+        orientation: "vertical"
+        padding: 40
+        spacing: 20
+        Label:
+            text: "Signal App - Enter Key"
+            font_size: 24
+        TextInput:
+            id: key_input
+            multiline: False
+            password: True
+        Button:
+            text: "Unlock"
+            on_release: root.check_key(key_input.text)
+        Label:
+            text: root.status
+
+<MainScreen>:
+    BoxLayout:
+        orientation: "vertical"
+        padding: 20
+        spacing: 15
+        Label:
+            text: 'SignalBot'
+            font_size: 32
+            size_hint_y: 0.1
+        Spinner:
+            id: asset_spinner
+            text: 'BTCUSDT'
+            values: ['BTCUSDT', 'ETHUSDT', 'SOLUSDT', 'BNBUSDT']
+            size_hint_y: 0.1
+        Label:
+            text: root.status_text
+            font_size: 16
+            size_hint_y: 0.25
+        Label:
+            text: root.signal_text
+            font_size: 18
+            size_hint_y: 0.25
+            color: 0,1,0,1
+        Button:
+            text: 'Get Signal'
+            size_hint_y: 0.15
+            on_release: root.get_signal(asset_spinner.text)
+        Button:
+            text: 'Check Bot Status'
+            size_hint_y: 0.15
+            on_release: root.check_status()
